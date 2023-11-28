@@ -1,21 +1,4 @@
-// let name = "rahul"
-//  let person2 = {
-//     name:"Kausick"
-// }
-// let person  = {
-//     name:"royal"
-    
-// }
-//  function  print(city, pin) {
-//     // console.log(this.name)
-//     console.log(`name:${this.name}, city:${city} , pin:${pin}`)
-// }
- 
-// // print.call(person)//it always give you reference of object
-// // print.call(person,"bhopal", "12345")
-// // print.apply(person,["delhi", 12345])
-// let func = print.bind(person, "hello", 231)
-// func()
+
 function BankAccount(accountNumber, name,type, balance){
     this.accountNumber = accountNumber
     this.name = name
