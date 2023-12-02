@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+        text-align: center;
+    }
+    div{
+        width: 100%;
+        height: 70vh;
+        border: 1px solid red;
+        overflow: hidden;
+    }
+    img{
+        width: 100%;
+        height:100%;
+        object-fit: cover;
+     object-position:bottom;
+       
+    }
+    </style>
+</head>
+<body>
+    <h2>Image slider</h2>
+    <div id="display">
+
+    </div>
+
+<button id="previous">Previous</button>
+<button id="start">Start</button>
+<button id="stop">Stop</button>
+
+<button id="next">next</button>
+
+
+</body>
+</html>
+<script>
+   let arr = [
+    {url:"https://images.pexels.com/photos/17827032/pexels-photo-17827032/free-photo-of-landscape-of-green-hills.jpeg"},
+    {url:"https://cdn.pixabay.com/photo/2023/10/23/18/10/pine-forest-8336619_640.jpg"},
+    {url:"https://images.pexels.com/photos/19215458/pexels-photo-19215458/free-photo-of-back-lit-photograph-of-birch-trees.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"},
+    {url:"https://cdn.pixabay.com/photo/2023/09/04/10/29/couple-8232473_640.jpg"},
+    {url:"https://images.pexels.com/photos/19212469/pexels-photo-19212469/free-photo-of-spools-of-thread.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"},
+    {url:"https://images.pexels.com/photos/3011836/pexels-photo-3011836.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"}
+    
+   ]
+   let display = document.getElementById("display")
+   let start = document.getElementById("start")
+   let stop = document.getElementById("stop")
+   let previous = document.getElementById("previous")
+   let next = document.getElementById("next")
+//    let img = document.querySelector("img")
+let img = document.createElement("img")
+
+let i = 0
+img.src = arr[i].url
+       
+display.append(img)
+
+   
+
+    
+     
+     start.addEventListener('click', function(){
+        let d = setInterval(function(){
+       
+
+       img.src = arr[i].url
+      
+   display.append(img)
+   console.log(i)
+   
+   i++;
+   if(i===arr.length){
+       i=0
+   }
+   stop.addEventListener('click',function(){
+       clearInterval(d)
+   })
+   
+  previous.addEventListener('click', function(){
+    clearInterval(d)
+  })
+   
+  next.addEventListener('click', function(){
+    clearInterval(d)
+    
+
+  })
+     },1000)
+     })
+
+
+     
+previous.addEventListener('click',function(){
+    // clearInterval(d)
+            if(i>0){
+                i-=1
+            img.src = arr[i].url
+       
+             display.append(img)
+             console.log(i)
+            }else if(i==0){
+                i=arr.length-1
+                img.src = arr[i].url
+       
+                display.append(img)
+                console.log(i)
+            }
+            
+          
+            
+    })
+     
+    next.addEventListener('click',function(){
+            if(i>=0 && i<arr.length-1){
+                i+=1
+            img.src = arr[i].url
+       
+             display.append(img)
+             console.log(i)
+            }else if(i==arr.length-1){
+                i=0
+                img.src = arr[i].url
+       
+                 display.append(img)
+            }
+            
+    })
+
+
+   
+    
+   
+</script>
