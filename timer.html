@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        h1{
+            text-align: center;
+            font-weight: 900;
+            color: red;
+            font-family: sans-serif;
+        }
+        #display{
+            display: flex;
+            width: 300px;
+            background-color: aqua;
+            height: 80px;
+            margin: auto;
+          justify-content: center;
+          align-items: center;
+          border-radius: 10px;
+            
+        }
+        h2{
+          /* border: 1px solid red;  */
+          padding: 10px 30px; 
+        }
+        #btn{
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+        button{
+            padding: 5px 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Timer</h1>
+    <div id="display">
+        <h2>00h</h2><h2>00m</h2><h2>00s</h2>
+    </div>
+    <div id="btn">
+        <button id="start">Start</button>
+        <button id="pause">Pause</button>
+        <button id="reset">Reset</button>
+    </div>
+</body>
+</html>
+<script>
+
+    let display = document.getAnimations("display")
+    let h2 = document.querySelectorAll("h2")
+    let start = document.getElementById("start")
+    let pause = document.getElementById("pause")
+    let reset = document.getElementById("reset")
+    let i = 0
+    let min = 0
+    let hour = 0
+    // h2[2].innerText = `0${i}s`
+    start.addEventListener('click', function(){
+       
+        let d = setInterval(function(){
+          if(i<10){
+            h2[2].innerText = `0${i}s`
+          }else{
+            h2[2].innerText = `${i}s`
+          }
+          if(i==59){
+            min+=1
+             if(min<10){
+                h2[1].innerText = `0${min}m`
+             }
+             else{
+                h2[1].innerText = `${min}m`
+             }
+             if(min==59){
+              hour+=1
+              if(hour<10){
+                h2[0].innerText = `0${hour}h`
+              }else{
+                h2[0].innerText = `${hour}h`
+              }
+              min = 0
+             }
+            i=0
+            h2[2].innerText = `0${i}s`
+          }
+        pause.addEventListener('click', function(){
+            clearInterval(d)
+            console.log("hello")
+        })
+
+        reset.addEventListener('click',function(){
+            clearInterval(d)
+            i= 0
+            min = 0
+            hour = 0
+            h2[2].innerText = `00s`
+            h2[0].innerText = `00h`
+            h2[1].innerText = `00m`
+        })
+      
+          i++
+     
+        }, 500)
+    })
+
+
+
+</script>
